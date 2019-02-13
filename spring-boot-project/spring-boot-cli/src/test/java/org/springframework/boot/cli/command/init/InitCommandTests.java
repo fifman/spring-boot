@@ -106,7 +106,8 @@ public class InitCommandTests extends AbstractHttpClientMockTests {
 
 	@Test
 	public void generateArchetypeProject() throws Exception {
-		assertThat(new InitCommand().run("--archetypes=test","--target=http://initializr.msplat.io")).isEqualTo(ExitStatus.OK);
+		assertThat(new InitCommand().run("--archetypes=test",
+				"--target=http://initializr.msplat.io")).isEqualTo(ExitStatus.OK);
 	}
 
 	@Test

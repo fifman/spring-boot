@@ -301,7 +301,7 @@ class ProjectGenerationRequest {
 	}
 
 	public List<String> getArchetypes() {
-		return archetypes;
+		return this.archetypes;
 	}
 
 	/**
