@@ -74,6 +74,8 @@ class ProjectGenerationRequest {
 
 	private List<String> dependencies = new ArrayList<>();
 
+	private List<String> archetypes = new ArrayList<>();
+
 	/**
 	 * The URL of the service to use.
 	 * @return the service URL
@@ -298,6 +300,10 @@ class ProjectGenerationRequest {
 		return this.dependencies;
 	}
 
+	public List<String> getArchetypes() {
+		return archetypes;
+	}
+
 	/**
 	 * Generates the URI to use to generate a project represented by this request.
 	 * @param metadata the metadata that describes the service
@@ -315,6 +321,11 @@ class ProjectGenerationRequest {
 			this.type = projectType.getId();
 			sb.append(projectType.getAction());
 			builder.setPath(sb.toString());
+
+			if (!this.archetypes.isEmpty()) {
+				builder.setParameter("archetypes",
+						StringUtils.collectionToCommaDelimitedString(this.archetypes));
+			}
 
 			if (!this.dependencies.isEmpty()) {
 				builder.setParameter("dependencies",

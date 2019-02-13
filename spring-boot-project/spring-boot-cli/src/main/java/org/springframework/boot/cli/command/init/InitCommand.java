@@ -111,6 +111,8 @@ public class InitCommand extends OptionParsingCommand {
 
 		private OptionSpec<String> dependencies;
 
+		private OptionSpec<String> archetypes;
+
 		private OptionSpec<Void> extract;
 
 		private OptionSpec<Void> force;
@@ -170,6 +172,9 @@ public class InitCommand extends OptionParsingCommand {
 			this.dependencies = option(Arrays.asList("dependencies", "d"),
 					"Comma-separated list of dependency identifiers to include in the "
 							+ "generated project").withRequiredArg();
+			this.archetypes = option("archetypes",
+					"Comma-separated list of archetypes to include in the "
+							+ "generated project").withRequiredArg();
 		}
 
 		private void otherOptions() {
@@ -222,6 +227,11 @@ public class InitCommand extends OptionParsingCommand {
 			request.setServiceUrl(options.valueOf(this.target));
 			if (options.has(this.bootVersion)) {
 				request.setBootVersion(options.valueOf(this.bootVersion));
+			}
+			if (options.has(this.archetypes)) {
+				for (String dep : options.valueOf(this.archetypes).split(",")) {
+					request.getArchetypes().add(dep.trim());
+				}
 			}
 			if (options.has(this.dependencies)) {
 				for (String dep : options.valueOf(this.dependencies).split(",")) {
