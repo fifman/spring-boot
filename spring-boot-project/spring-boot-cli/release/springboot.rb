@@ -2,10 +2,10 @@ require 'formula'
 
 class Springboot < Formula
   homepage 'https://spring.io/projects/spring-boot'
-  url 'https://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/2.2.0.BUILD-SNAPSHOT/spring-boot-cli-2.2.0.BUILD-SNAPSHOT-bin.tar.gz'
+  url 'https://github.com/fifman/spring-boot/blob/master/spring-boot-project/spring-boot-cli/release/spring-boot-cli-2.2.0.BUILD-SNAPSHOT-bin.tar.gz'
   version '2.2.0.BUILD-SNAPSHOT'
-  sha256 '6d372504a85ca6363fa0c5ee3c071aa258716808e4600d4abdd3c3e2e12bb0ed'
-  head 'https://github.com/spring-projects/spring-boot.git'
+  sha256 '2d02229a4a083b98452c31e8563f2b29d55c628d65694f21bc26c365a9e63a75'
+  head 'https://github.com/fifman/spring-boot.git'
 
   if build.head?
     depends_on 'maven' => :build
@@ -13,8 +13,8 @@ class Springboot < Formula
 
   def install
     if build.head?
-      Dir.chdir('spring-boot-cli') { system 'mvn -U -DskipTests=true package' }
-      root = 'spring-boot-cli/target/spring-boot-cli-*-bin/spring-*'
+      Dir.chdir('spring-boot-projects/spring-boot-cli') { system 'mvn -U -DskipTests=true package' }
+      root = 'spring-boot-projects/spring-boot-cli/target/spring-boot-cli-*-bin/spring-*'
     else
       root = '.'
     end
