@@ -338,15 +338,15 @@
 									property="checksum" />
 								<echo
 									message="Customizing homebrew for ${project.version} with checksum ${checksum} in ${repo} repo" />
-								<copy file="${basedir}/src/main/homebrew/springboot.rb"
-									tofile="${basedir}/release/springboot.rb"
+								<copy file="${basedir}/src/main/homebrew/springbootx.rb"
+									tofile="${basedir}/release/springbootx.rb"
 									overwrite="true">
 									<filterchain>
 										<expandproperties />
 									</filterchain>
 								</copy>
 								<attachartifact
-									file="${basedir}/release/springboot.rb"
+									file="${basedir}/release/springbootx.rb"
 									classifier="homebrew" type="rb" />
 							</target>
 						</configuration>
